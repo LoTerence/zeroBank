@@ -1,5 +1,6 @@
 package zeroBank.pages;
 
+import org.openqa.selenium.Alert;
 //import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,7 +22,7 @@ public class PayBillsPage extends TestBase {
 	WebElement purchaseForCurrLink;
 	
 	//success message
-	@FindBy(xpath = ".//*[@id=\"alert_content\"]/span")
+	@FindBy(id = "alert_content")
 	WebElement alertMessage;
 	
 	//pay saved payee tab elements
@@ -49,9 +50,6 @@ public class PayBillsPage extends TestBase {
 	@FindBy(xpath = ".//*[@id=\"pay_saved_payees\"]")
 	WebElement payButton;
 	
-	@FindBy(xpath = ".//*[@id=\"alert_content\"]/span")
-	WebElement paymentSuccessfulAlert;
-	
 	//add new payee tab elements
 	@FindBy(xpath = ".//*[@id=\"ui-tabs-2\"]/h2") 
 	WebElement addNewPayeeHeader;
@@ -68,35 +66,35 @@ public class PayBillsPage extends TestBase {
 	@FindBy(xpath = ".//*[@id=\"np_new_payee_details\"]")
 	WebElement payeeDetailsInput;
 	
-	@FindBy(xpath = ".//*[@id=\"add_new_payee\"]")
-	WebElement newPayeeAddButton;
+	@FindBy(id = "add_new_payee")
+	WebElement addButton;
 	
 	//purchase foreign currency tab elements
-	@FindBy(xpath = ".//*[@id=\"ui-tabs-3\"]/h2") 
-	WebElement purchaseForeignCurrencyHeader;
+	@FindBy(id = "ui-tabs-3") 
+	WebElement purForCurrHeader;
 	
-	@FindBy(xpath = ".//*[@id=\"pc_currency\"]")
+	@FindBy(id = "pc_currency")
 	WebElement currencySelect;
 
-	@FindBy(xpath = ".//*[@id=\"sp_sell_rate\"]")
+	@FindBy(id = "sp_sell_rate")
 	WebElement sellRate;
 	
-	@FindBy(xpath = ".//*[@id=\"pc_amount\"]")
+	@FindBy(id = "pc_amount")
 	WebElement foreignCurrencyAmountInput;
 	
-	@FindBy(xpath = ".//*[@id=\"pc_inDollars_true\"]")
+	@FindBy(id = "pc_inDollars_true")
 	WebElement usd_radioButton;
 	
-	@FindBy(xpath = ".//*[@id=\"pc_inDollars_false\"]")
+	@FindBy(id = "pc_inDollars_false")
 	WebElement selectedCurrency_radioButton;
 	
-	@FindBy(xpath = ".//*[@id=\"pc_calculate_costs\"]")
+	@FindBy(id = "pc_calculate_costs")
 	WebElement calculateCostsButton;  //this button also has a pop up I can test - todo
 	
-	@FindBy(xpath = ".//*[@id=\"pc_conversion_amount\"]")
+	@FindBy(id = "pc_conversion_amount")
 	WebElement conversionAmountLabel;
 	
-	@FindBy(xpath = ".//*[@id=\"purchase_cash\"]")
+	@FindBy(id = "purchase_cash")
 	WebElement purchaseButton;
 	
 	
@@ -127,7 +125,7 @@ public class PayBillsPage extends TestBase {
 	}
 	
 	//@param date should be YYYY-MM-DD format
-	public void paySavedPayee(String payee, String account, int amount, String date, String description) {
+	public void paySavedPayee(String payee, String account, String amount, String date, String description) {
 		
 		//select payee
 		Select pSelect = new Select(payeeSelect);
@@ -174,7 +172,7 @@ public class PayBillsPage extends TestBase {
 		}
 		
 		//input amount
-		amountInput.sendKeys(Integer.toString(amount));
+		amountInput.sendKeys(amount);
 		
 		//input date
 		dateInput.sendKeys(date);
@@ -188,15 +186,107 @@ public class PayBillsPage extends TestBase {
 		payButton.click();
 	}
 	
-	public boolean verifyPayment() {
-		return paymentSuccessfulAlert.isDisplayed();
+	public boolean verifySuccess() {
+		return alertMessage.isDisplayed();
+	}
+	
+	//methods for add new payee tab
+	public boolean verifyANPHeader() {
+		return addNewPayeeHeader.isDisplayed();
+	}
+	
+	public void addNewPayee(String name, String address, String account, String details) {
+		payeeNameInput.sendKeys(name);
+		payeeAddressInput.sendKeys(address);
+		payeeAccountInput.sendKeys(account);
+		payeeDetailsInput.sendKeys(details);
+	}
+	
+	public void clickAddButton() {
+		addButton.click();
 	}
 	
 	
-	//methods for add new payee tab
-	
-	
 	//methods for purchase foreign currency tab
+	public boolean verifyPurForCurrHeader() {
+		return purForCurrHeader.isDisplayed();
+	}
+	
+	//@param curr should be a currency's 3 letter ticker symbol ex:USD
+	public void purchaseForeignCurrency(String curr, String amount, String forCurrSelect) {
+		
+		Select cSelect = new Select(currencySelect);
+		switch(curr) {
+		case "AUD":
+			cSelect.selectByValue("AUD");
+			break;
+		case "CAD":
+			cSelect.selectByValue("CAD");
+			break;
+		case "CHF":
+			cSelect.selectByValue("CHF");
+			break;
+		case "CNY":
+			cSelect.selectByValue("CNY");
+			break;
+		case "DKK":
+			cSelect.selectByValue("DKK");
+			break;
+		case "EUR":
+			cSelect.selectByValue("EUR");
+			break;
+		case "GBP":
+			cSelect.selectByValue("GBP");
+			break;
+		case "HKD":
+			cSelect.selectByValue("HKD");
+			break;
+		case "JPY":
+			cSelect.selectByValue("JPY");
+			break;
+		case "MXN":
+			cSelect.selectByValue("MXN");
+			break;
+		case "NOK":
+			cSelect.selectByValue("NOK");
+			break;
+		case "NZD":
+			cSelect.selectByValue("NZD");
+			break;
+		case "SEK":
+			cSelect.selectByValue("SEK");
+			break;
+		case "SGD":
+			cSelect.selectByValue("SGD");
+			break;
+		case "THB":
+			cSelect.selectByValue("THB");
+			break;
+		default:
+			System.out.println("purchaseForeignCurrency error: currSelect invalid");
+		}
+		foreignCurrencyAmountInput.sendKeys(amount);
+		
+		if (forCurrSelect.equals("USD")) {
+			usd_radioButton.click();
+		}else {
+			selectedCurrency_radioButton.click();
+		}
+	}
+	
+	public void handleAlert() {
+		Alert simpleAlert = driver.switchTo().alert();
+		simpleAlert.accept();
+	}
+	
+	public void calculateCosts() {
+		
+	}
+	
+	public void clickPurchaseButton() {
+		purchaseButton.click();
+	}
+	
 	
 	
 	

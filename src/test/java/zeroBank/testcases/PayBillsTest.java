@@ -36,11 +36,92 @@ public class PayBillsTest extends TestBase {
 
 	//test a successful payment will show appropriate alert message
 	@Test
-	public void verifySuccessfulPayment() {
-		pbp.paySavedPayee("Spring", "Savings", 20, "2018-10-21", "a description");
+	public void successfulPayment() {
+		pbp.paySavedPayee("Sprint", "Savings", "20", "2018-10-21", "a description");
 		pbp.clickPayButton();
-		Assert.assertTrue(pbp.verifyPayment());
+		Assert.assertTrue(pbp.verifySuccess());
 	}
+	
+	//test pay saved payee - amount should not be <0
+	@Test
+	public void payNegativeAmount() {
+		pbp.paySavedPayee("Sprint", "Savings", "-1", "2018-10-21", "a description");
+		pbp.clickPayButton();
+		Assert.assertTrue(!pbp.verifySuccess());
+	}
+
+	//test pay saved payee - amount should not be == 0
+	@Test
+	public void payZeroAmount() {
+		pbp.paySavedPayee("Sprint", "Savings", "0", "2018-10-21", "a description");
+		pbp.clickPayButton();
+		Assert.assertTrue(!pbp.verifySuccess());
+	}
+
+	//test pay saved payee - amount should not be empty
+ //this test is bugging out - xpath for success alert cannot be found
+	@Test
+	public void payEmptyAmount() {
+		pbp.paySavedPayee("Sprint", "Savings", "", "2018-10-21", "a description");
+		pbp.clickPayButton();
+		Assert.assertTrue(!pbp.verifySuccess());
+	} 
+	
+	//test for successfully adding new payee
+	@Test
+	public void successfulAddPayee() {
+		pbp.clickAddNewPayeeLink();
+		pbp.addNewPayee("Paul", "123 Real St", "Apple", "Some details");
+		pbp.clickAddButton();
+		Assert.assertTrue(pbp.verifySuccess());
+	}
+	
+	@Test
+	public void emptyFieldsAddPayee() {
+		pbp.clickAddNewPayeeLink();
+		pbp.addNewPayee("", "", "", "");
+		pbp.clickAddButton();
+		Assert.assertTrue(!pbp.verifySuccess());
+	}
+	
+	//test for successfully purchasing foreign currency 
+	@Test
+	public void successfulFCPurchase() {
+		pbp.clickPurchaseForCurrLink();
+		pbp.purchaseForeignCurrency("CAD", "100", "USD");
+		pbp.clickPurchaseButton();
+		Assert.assertTrue(pbp.verifySuccess());
+	}
+	
+	//test for successfully purchasing foreign currency. should not be negative 
+	@Test
+	public void negativeFCPurchase() {
+		pbp.clickPurchaseForCurrLink();
+		pbp.purchaseForeignCurrency("AUD", "-100", "AUD");
+		pbp.clickPurchaseButton();
+		Assert.assertTrue(!pbp.verifySuccess());
+	}
+	
+	//test for successfully purchasing foreign currency. should not be empty amount 
+	@Test
+	public void emptyFCPurchase() {
+		pbp.clickPurchaseForCurrLink();
+		pbp.purchaseForeignCurrency("CNY", "", "");
+		pbp.clickPurchaseButton();
+		pbp.handleAlert();
+		Assert.assertTrue(!pbp.verifySuccess());
+	}
+
+	//test for successfully purchasing foreign currency. should not be zero amount 
+	@Test
+	public void zeroFCPurchase() {
+		pbp.clickPurchaseForCurrLink();
+		pbp.purchaseForeignCurrency("CNY", "0", "USD");
+		pbp.clickPurchaseButton();
+		pbp.handleAlert();
+		Assert.assertTrue(!pbp.verifySuccess());
+	}
+
 
 	@AfterMethod
 	public void tearDown() {
