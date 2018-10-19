@@ -1,6 +1,9 @@
 package zeroBank.testcases;
 
 import org.testng.annotations.Test;
+
+import junit.framework.Assert;
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
 
@@ -18,10 +21,6 @@ public class PayBillsTest extends TestBase {
 	HomePage homePage;
 	AccountSummary summaryPage;
 	PayBillsPage pbp;
-
-	@Test
-	public void f() {
-	}
 	
 	@BeforeMethod
 	public void setUp() {
@@ -33,6 +32,14 @@ public class PayBillsTest extends TestBase {
 		loginPage = homePage.clickSignIn();
 		summaryPage = loginPage.signIn(prop.getProperty("username"), prop.getProperty("password"));
 		pbp = summaryPage.clickPayBills();
+	}
+
+	//test a successful payment will show appropriate alert message
+	@Test
+	public void verifySuccessfulPayment() {
+		pbp.paySavedPayee("Spring", "Savings", 20, "2018-10-21", "a description");
+		pbp.clickPayButton();
+		Assert.assertTrue(pbp.verifyPayment());
 	}
 
 	@AfterMethod

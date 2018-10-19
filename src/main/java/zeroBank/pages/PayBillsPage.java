@@ -1,6 +1,6 @@
 package zeroBank.pages;
 
-import org.openqa.selenium.By;
+//import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -38,7 +38,7 @@ public class PayBillsPage extends TestBase {
 	WebElement accountSelect;
 	
 	@FindBy(xpath = ".//*[@id=\"sp_amount\"]")
-	WebElement amountSelect;
+	WebElement amountInput;
 	
 	@FindBy(xpath = ".//*[@id=\"sp_date\"]")
 	WebElement dateInput;
@@ -47,7 +47,10 @@ public class PayBillsPage extends TestBase {
 	WebElement descrInput;
 	
 	@FindBy(xpath = ".//*[@id=\"pay_saved_payees\"]")
-	WebElement savedPayeePayButton;
+	WebElement payButton;
+	
+	@FindBy(xpath = ".//*[@id=\"alert_content\"]/span")
+	WebElement paymentSuccessfulAlert;
 	
 	//add new payee tab elements
 	@FindBy(xpath = ".//*[@id=\"ui-tabs-2\"]/h2") 
@@ -106,9 +109,94 @@ public class PayBillsPage extends TestBase {
 		return driver.getTitle();
 	}
 	
-	//methods for pay saved payee tab
+	public void clickPaySavedPayeeLink() {
+		paySavedPayeeLink.click();
+	}
+	
+	public void clickAddNewPayeeLink() {
+		addNewPayeeLink.click();
+	}
+	
+	public void clickPurchaseForCurrLink() {
+		purchaseForCurrLink.click();
+	}
+	
+	// ------------- methods for pay saved payee tab --------------
+	public boolean verifyPspHeader() {
+		return paySavedPayeeHeader.isDisplayed();
+	}
+	
+	//@param date should be YYYY-MM-DD format
+	public void paySavedPayee(String payee, String account, int amount, String date, String description) {
+		
+		//select payee
+		Select pSelect = new Select(payeeSelect);
+		switch(payee.toLowerCase()) {
+		case "sprint":
+			pSelect.selectByVisibleText("Sprint");
+			break;
+		case "bank of america":
+			pSelect.selectByVisibleText("Bank of America");
+			break;
+		case "apple":
+			pSelect.selectByVisibleText("Apple");
+			break;
+		case "wells fargo":
+			pSelect.selectByVisibleText("Wells Fargo");
+			break;
+		default:
+			System.out.println("pay Saved Payee function error: payee param not found in payee select");
+			break;
+		}
+
+		//select account
+		//defect: two accounts that have the same name: "Savings"
+		pSelect = new Select(accountSelect);
+		switch(account.toLowerCase()) {
+		case "savings":
+			pSelect.selectByIndex(1);
+			break;
+		case "checking":
+			pSelect.selectByIndex(2);
+			break;
+		case "loan":
+			pSelect.selectByIndex(4);
+			break;
+		case "credit card":
+			pSelect.selectByIndex(5);
+			break;
+		case "brokerage":
+			pSelect.selectByIndex(6);
+			break;
+		default:
+			System.out.println("pay Saved Payee function error: account param not found in account select");
+			break;
+		}
+		
+		//input amount
+		amountInput.sendKeys(Integer.toString(amount));
+		
+		//input date
+		dateInput.sendKeys(date);
+		
+		//input desc
+		descrInput.sendKeys(description);
+		
+	}
+	
+	public void clickPayButton() {
+		payButton.click();
+	}
+	
+	public boolean verifyPayment() {
+		return paymentSuccessfulAlert.isDisplayed();
+	}
 	
 	
+	//methods for add new payee tab
+	
+	
+	//methods for purchase foreign currency tab
 	
 	
 	
