@@ -115,5 +115,11 @@ public class AccountSummary extends TestBase {
 		return new AccountActivity();
 	}
 	
+	//navigates to pay bills page
+	public PayBillsPage clickPayBills() {
+		payBillsBtn.click();
+		return new PayBillsPage();
+	}
+	
 } // end of class
 
