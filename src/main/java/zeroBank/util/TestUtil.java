@@ -21,9 +21,8 @@ public class TestUtil extends TestBase {
 	public static long PAGE_LOAD_TIMEOUT = 20;
 	public static long IMPLICIT_WAIT = 20;
 
-	public static String TESTDATA_SHEET_PATH = 
-			"C:\\Users\\Public\\FinalProject\\zeroBank\\src\\main\\java\\zeroBank\\testdata\\ZeroBankTestData.xlsx";
-
+	public static String TESTDATA_SHEET_PATH = path+"\\testdata\\ZeroBankTestData.xlsx";
+	
 	static Workbook book;
 	static Sheet sheet;
 	static JavascriptExecutor js;
