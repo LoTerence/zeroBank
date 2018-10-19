@@ -19,10 +19,13 @@ public class TestBase {
 	
 	public static Properties prop;
 	
+protected static String path = System.getProperty("user.dir");
+	
 	public TestBase() {
 		try {
 			prop = new Properties();
-			FileInputStream ip = new FileInputStream("C:\\Users\\Public\\FinalProject\\zeroBank\\src\\main\\java\\zeroBank\\config\\config.properties");
+			System.out.println(path);
+			FileInputStream ip = new FileInputStream(path+"\\src\\main\\java\\zeroBank\\config\\config.properties");
 			prop.load(ip);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -36,7 +39,7 @@ public class TestBase {
 		
 		String browserName = prop.getProperty("browser");
 		if(browserName.equals("chrome")) {
-			System.setProperty("webdriver.chrome.driver", "C:/SeleniumBrowserDrivers/chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", path+"/driverResources/chromedriver.exe");
 			// enable headless browsing if need be
 //			ChromeOptions options = new ChromeOptions
 //			options.addArguments("headless");
@@ -44,10 +47,10 @@ public class TestBase {
 //			driver = new ChromeDriver(options);
 			driver = new ChromeDriver();
 		} else if(browserName.equals("ff")) {
-			System.setProperty("webdriver.gecko.driver", "C:/SeleniumBrowserDrivers/geckodriver.exe");
+			System.setProperty("webdriver.gecko.driver", path+"/driverResources/geckodriver.exe");
 			driver = new FirefoxDriver();
 		}else if(browserName.equals("ie")){
-        	String service = "C:\\SeleniumBrowserDrivers\\IEDriverServer.exe";
+        	String service = path+"/driverResources/IEDriverServer.exe";
         	System.setProperty("webdriver.ie.driver", service);
         	driver = new InternetExplorerDriver();
 		}
