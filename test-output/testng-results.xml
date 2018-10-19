@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="7" passed="7" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2018-10-18T23:54:21Z" name="Default suite" finished-at="2018-10-18T23:55:37Z" duration-ms="75763">
+    <groups>
+    </groups>
+    <test started-at="2018-10-18T23:54:21Z" name="Default test" finished-at="2018-10-18T23:55:37Z" duration-ms="75763">
+      <class name="zeroBank.testcases.LoginPageTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:zeroBank.testcases.LoginPageTest@45ca843]" started-at="2018-10-18T23:54:21Z" name="setUp" finished-at="2018-10-18T23:54:31Z" duration-ms="10083" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="checkBoxVerify()[pri:0, instance:zeroBank.testcases.LoginPageTest@45ca843]" started-at="2018-10-18T23:54:31Z" name="checkBoxVerify" finished-at="2018-10-18T23:54:32Z" duration-ms="178" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkBoxVerify -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:zeroBank.testcases.LoginPageTest@45ca843]" started-at="2018-10-18T23:54:32Z" name="tearDown" finished-at="2018-10-18T23:54:32Z" duration-ms="742" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:zeroBank.testcases.LoginPageTest@45ca843]" started-at="2018-10-18T23:54:32Z" name="setUp" finished-at="2018-10-18T23:54:43Z" duration-ms="10258" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="errorMessageOnInvalid()[pri:0, instance:zeroBank.testcases.LoginPageTest@45ca843]" started-at="2018-10-18T23:54:43Z" name="errorMessageOnInvalid" finished-at="2018-10-18T23:54:44Z" duration-ms="975" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- errorMessageOnInvalid -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:zeroBank.testcases.LoginPageTest@45ca843]" started-at="2018-10-18T23:54:44Z" name="tearDown" finished-at="2018-10-18T23:54:44Z" duration-ms="776" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:zeroBank.testcases.LoginPageTest@45ca843]" started-at="2018-10-18T23:54:44Z" name="setUp" finished-at="2018-10-18T23:54:53Z" duration-ms="8968" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="hoverMessageIsDisplayed()[pri:0, instance:zeroBank.testcases.LoginPageTest@45ca843]" started-at="2018-10-18T23:54:53Z" name="hoverMessageIsDisplayed" finished-at="2018-10-18T23:54:53Z" duration-ms="158" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- hoverMessageIsDisplayed -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:zeroBank.testcases.LoginPageTest@45ca843]" started-at="2018-10-18T23:54:53Z" name="tearDown" finished-at="2018-10-18T23:54:54Z" duration-ms="714" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:zeroBank.testcases.LoginPageTest@45ca843]" started-at="2018-10-18T23:54:54Z" name="setUp" finished-at="2018-10-18T23:55:07Z" duration-ms="12603" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="loginVerify()[pri:0, instance:zeroBank.testcases.LoginPageTest@45ca843]" started-at="2018-10-18T23:55:07Z" name="loginVerify" finished-at="2018-10-18T23:55:12Z" duration-ms="5424" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- loginVerify -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:zeroBank.testcases.LoginPageTest@45ca843]" started-at="2018-10-18T23:55:12Z" name="tearDown" finished-at="2018-10-18T23:55:13Z" duration-ms="874" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:zeroBank.testcases.LoginPageTest@45ca843]" started-at="2018-10-18T23:55:13Z" name="setUp" finished-at="2018-10-18T23:55:20Z" duration-ms="7446" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="verifyForgottenPasswordLink()[pri:0, instance:zeroBank.testcases.LoginPageTest@45ca843]" started-at="2018-10-18T23:55:20Z" name="verifyForgottenPasswordLink" finished-at="2018-10-18T23:55:21Z" duration-ms="520" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyForgottenPasswordLink -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:zeroBank.testcases.LoginPageTest@45ca843]" started-at="2018-10-18T23:55:21Z" name="tearDown" finished-at="2018-10-18T23:55:22Z" duration-ms="704" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:zeroBank.testcases.LoginPageTest@45ca843]" started-at="2018-10-18T23:55:22Z" name="setUp" finished-at="2018-10-18T23:55:29Z" duration-ms="7051" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="verifyLoginPageZeroLogo()[pri:0, instance:zeroBank.testcases.LoginPageTest@45ca843]" started-at="2018-10-18T23:55:29Z" name="verifyLoginPageZeroLogo" finished-at="2018-10-18T23:55:29Z" duration-ms="69" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyLoginPageZeroLogo -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:zeroBank.testcases.LoginPageTest@45ca843]" started-at="2018-10-18T23:55:29Z" name="tearDown" finished-at="2018-10-18T23:55:30Z" duration-ms="751" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:zeroBank.testcases.LoginPageTest@45ca843]" started-at="2018-10-18T23:55:30Z" name="setUp" finished-at="2018-10-18T23:55:36Z" duration-ms="6700" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="verifyLoginPagetitle()[pri:0, instance:zeroBank.testcases.LoginPageTest@45ca843]" started-at="2018-10-18T23:55:36Z" name="verifyLoginPagetitle" finished-at="2018-10-18T23:55:36Z" duration-ms="23" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyLoginPagetitle -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:zeroBank.testcases.LoginPageTest@45ca843]" started-at="2018-10-18T23:55:36Z" name="tearDown" finished-at="2018-10-18T23:55:37Z" duration-ms="706" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- zeroBank.testcases.LoginPageTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
