@@ -59,7 +59,6 @@ public class PayBillsTest extends TestBase {
 	}
 
 	//test pay saved payee - amount should not be empty
- //this test is bugging out - xpath for success alert cannot be found
 	@Test
 	public void payEmptyAmount() {
 		pbp.paySavedPayee("Sprint", "Savings", "", "2018-10-21", "a description");
@@ -125,6 +124,7 @@ public class PayBillsTest extends TestBase {
 
 	@AfterMethod
 	public void tearDown() {
+		driver.close();
 		driver.quit();
 		System.out.println("test complete...");
 	}

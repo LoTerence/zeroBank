@@ -1,7 +1,6 @@
 package zeroBank.pages;
 
 import org.openqa.selenium.Alert;
-//import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -264,12 +263,16 @@ public class PayBillsPage extends TestBase {
 			break;
 		default:
 			System.out.println("purchaseForeignCurrency error: currSelect invalid");
+			break;
 		}
 		foreignCurrencyAmountInput.sendKeys(amount);
 		
 		if (forCurrSelect.equals("USD")) {
 			usd_radioButton.click();
-		}else {
+		}else if(forCurrSelect.equals("")) {
+			//click no radio buttons
+		}
+		else {
 			selectedCurrency_radioButton.click();
 		}
 	}
